@@ -1,0 +1,8 @@
+spring:
+  application:
+    name: todo_list_backend
+  datasource:
+    url: jdbc:mysql://localhost:3306/homework_test?useUnicode=true&characterEncoding=UTF-8&serverTimezone=UTC
+
+server:
+  port: 8080
