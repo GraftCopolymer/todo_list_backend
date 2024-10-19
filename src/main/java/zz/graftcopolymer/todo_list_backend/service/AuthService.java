@@ -2,6 +2,7 @@ package zz.graftcopolymer.todo_list_backend.service;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+import org.springframework.web.bind.annotation.RequestBody;
 import zz.graftcopolymer.todo_list_backend.mapper.UserMapper;
 import zz.graftcopolymer.todo_list_backend.model.DataRequest;
 import zz.graftcopolymer.todo_list_backend.po.User;
@@ -62,5 +63,26 @@ public class AuthService {
         dataResult.put("userId", u.getId());
 
         return Result.success(dataResult, "登录成功");
+    }
+
+    public Result modifyPassword(DataRequest req){
+        Integer userId = req.getInteger("userId");
+        String oldPassword = req.getString("oldPassword");
+        String newPassword = req.getString("newPassword");
+
+        if(userId == null){
+            return Result.error(-1, "请提供用户ID");
+        }
+        User u = userMapper.selectById(userId);
+        if(u == null){
+            return Result.error(-1, "用户不存在");
+        }
+
+        if(!Objects.equals(oldPassword, u.getPassword())){
+            return Result.error(-1, "旧密码不正确");
+        }
+        u.setPassword(newPassword);
+        userMapper.updateById(u);
+        return Result.ok();
     }
 }

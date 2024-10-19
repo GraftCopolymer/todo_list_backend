@@ -16,14 +16,19 @@ public class AuthController {
     private AuthService authService;
 
     @PostMapping("/register")
-    public Result register(@RequestBody DataRequest req){
+    public Result register( DataRequest req){
         return authService.register(req);
     }
 
     @PostMapping("login")
-    public Result login(@RequestBody DataRequest req){
+    public Result login( DataRequest req){
         return authService.login(req);
     }
 
-    
+    // 修改密码
+    @PostMapping("/modifyPassword")
+    public Result modifyPassword( DataRequest req){
+        return authService.modifyPassword(req);
+    }
+
 }
