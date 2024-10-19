@@ -2,7 +2,19 @@ spring:
   application:
     name: todo_list_backend
   datasource:
-    url: jdbc:mysql://localhost:3306/homework_test?useUnicode=true&characterEncoding=UTF-8&serverTimezone=UTC
+    url: jdbc:mysql://localhost:3306/todo_list?useUnicode=true&characterEncoding=UTF-8&serverTimezone=UTC
+    username: root
+    password: 123456789gcgc
+  sql:
+    init:
+      # 每次启动自动运行建表脚本
+      mode: always
+      schema-locations: classpath:schema.sql
 
 server:
   port: 8080
+
+mybatis-plus:
+  configuration:
+    map-underscore-to-camel-case: true
+
