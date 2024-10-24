@@ -5,6 +5,7 @@ import com.baomidou.mybatisplus.annotation.TableId;
 import com.baomidou.mybatisplus.annotation.TableName;
 import lombok.*;
 
+import java.time.LocalDate;
 import java.time.LocalDateTime;
 import java.time.format.DateTimeFormatter;
 import java.util.HashMap;
@@ -22,7 +23,7 @@ public class ToDoItem {
 
     private Integer finished;
     private String title;
-    private LocalDateTime ddl;
+    private LocalDate ddl;
 
     private Integer userId;
 

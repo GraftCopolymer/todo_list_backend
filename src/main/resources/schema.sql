@@ -9,6 +9,6 @@ CREATE TABLE IF NOT EXISTS todo_item(
     user_id INTEGER NOT NULL,
     finished INTEGER NOT NULL,
     title VARCHAR(255) NOT NULL,
-    ddl DATETIME,
+    ddl DATE,
     FOREIGN KEY (user_id) REFERENCES user(id)
 );

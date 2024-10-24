@@ -11,6 +11,7 @@ import zz.graftcopolymer.todo_list_backend.po.ToDoItem;
 import zz.graftcopolymer.todo_list_backend.po.User;
 import zz.graftcopolymer.todo_list_backend.vo.Result;
 
+import java.time.LocalDate;
 import java.time.LocalDateTime;
 import java.time.format.DateTimeFormatter;
 import java.time.format.DateTimeParseException;
@@ -94,16 +95,18 @@ public class ToDoItemService {
         if(title == null || title.isEmpty()){
             return Result.error(-1, "请提供待办项标题");
         }
-        LocalDateTime dateTime;
+        LocalDate dateTime;
+        System.out.println(ddl);
         try{
             if (ddl == null || ddl.isEmpty()){
                 dateTime = null;
             }
             else{
-                dateTime = LocalDateTime.parse(ddl, DateTimeFormatter.ofPattern("yyyy-MM-dd"));
+                dateTime = LocalDate.parse(ddl, DateTimeFormatter.ofPattern("yyyy-MM-dd"));
             }
         }
         catch (DateTimeParseException e){
+            e.printStackTrace();
             return Result.error(-1, "日期格式不正确");
         }
         ToDoItem item = new ToDoItem();
