@@ -116,6 +116,9 @@ public class ToDoItemService {
         item.setFinished(0);
         item.setDdl(dateTime);
 
+        toDoItemMapper.insert(item);
+        System.out.println(item.getId());
+
         Map data = new HashMap<>();
         data.put("itemId", item.getId());
         return Result.success(data, "保存成功");
